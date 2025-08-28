@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EduMate</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">🚀 EduMate Dashboard</div>
+            <ul class="nav-links">
+                <li><a href="#" id="logout-btn">Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="welcome-banner">
+            <section class="dashboard-widget stats-widget">
+                <h3>Your Week in Review 📊</h3>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h4>Total Notes</h4>
+                        <p id="total-notes-stat">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Total Reminders</h4>
+                        <p id="total-reminders-stat">0</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="productivityChart"></canvas>
+                </div>
+            </section>
+            <h2>Welcome back, <span id="username-display">Student</span>!</h2>
+            <p>This is your space to organize, study, and succeed. Let's get started.</p>
+        </div>
+
+        <div class="dashboard-grid-3-col">
+            <section class="dashboard-widget notes-widget">
+                <h3>My Notes 📝</h3>
+                <form id="note-form">
+                    <input type="text" id="note-title" placeholder="Note Title" required>
+                    <textarea id="note-content" placeholder="Start writing your note here..." rows="4" required></textarea>
+                    <button type="submit" class="cta-button">Add Note</button>
+                </form>
+                <h3>My Notes 📝</h3>
+                <form id="note-form"> ... </form>
+
+                <div id="notes-loader" class="loader"></div>
+
+                <div id="notes-container">
+                    </div>
+                <div id="notes-container">
+                    </div>
+            </section> 
+            
+            <section class="dashboard-widget reminders-widget">
+                <h3>Reminders 🗓️</h3>
+                <form id="reminder-form">
+                    <input type="text" id="reminder-title" placeholder="e.g., Submit Physics paper" required>
+                    <input type="date" id="reminder-dueDate" required>
+                    <button type="submit" class="cta-button">Add Reminder</button>
+                </form>
+                <div id="reminders-container">
+                    </div>
+            </section>
+
+            <section class="dashboard-widget">
+                <h3>AI Study Helper ✨</h3>
+                <form id="ai-helper-form">
+                    <textarea id="ai-text-input" placeholder="Paste text here to summarize..." rows="8" required></textarea>
+                    <button type="submit" class="cta-button">Summarize</button>
+                </form>
+                <div id="ai-loader" class="loader hidden"></div>
+                <div id="ai-result-container">
+                    </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

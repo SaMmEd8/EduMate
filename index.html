@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMate - Your Smart Study Companion</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">🚀 EduMate</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="login.html" class="login-btn">Log In</a>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Your AI-Powered Academic Co-Pilot</h1>
+                <p>EduMate organizes your notes, manages deadlines, and simplifies complex topics so you can study smarter, not harder.</p>
+                <a href="login.html" class="cta-button">Get Started for Free</a>
+            </div>
+            <div class="hero-image">
+                
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Everything You Need in One Place</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📝 Smart Notebooks</h3>
+                    <p>Organize your class notes, link resources, and find anything instantly with powerful search.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🤖 AI Study Help</h3>
+                    <p>Get instant summaries of long texts, explanations of complex concepts, and answers to your questions.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🗓️ Smart Scheduler</h3>
+                    <p>Never miss a deadline. Track assignments, exams, and class schedules with intelligent reminders.</p>
+                </div>
+                 <div class="feature-card">
+                    <h3>📈 Productivity Dashboard</h3>
+                    <p>Visualize your study habits, track your progress, and stay motivated towards your academic goals.</p>
+                </div>
+            </div>
+        </section>
+        </div>
+    </section> <section id="about" class="about-section">
+      <div class="about-content">
+        <h2>About EduMate 🚀</h2>
+        <p>EduMate began as a project to build the ultimate smart study companion for college students. The goal was to create a single, intuitive platform combining everything a student needs: smart notebooks, AI-powered study assistance, a powerful scheduler, and tools to track productivity. This isn't just another app; it's designed to be your personal academic co-pilot, helping you study smarter, reduce stress, and achieve your goals. This project was built step-by-step, incorporating a full-stack architecture with a Node.js backend, a dynamic frontend, and integration with powerful third-party AI.</p>
+      </div>
+    </section>
+
+  </main> ```
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 EduMate. All rights reserved. Your journey to smarter studying starts here.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Stop the form from reloading the page
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // Send the login data to your backend API
+                const response = await fetch('http://localhost:5000/api/users/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Login successful! Server sent back a token.
+                    alert('Login successful!');
+                    // Save the TOKEN, not the username, to localStorage
+                    localStorage.setItem('eduMateToken', data.token);
+                    // Redirect to the dashboard
+                    window.location.href = 'dashboard.html';
+                } else {
+                    // Login failed. Show the error message from the server.
+                    alert(`Login Failed: ${data.message}`);
+                }
+
+            } catch (error) {
+                console.error('Error during login:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
+    <script src="landing.js"></script>
+</body>
+</body>
+</html>
