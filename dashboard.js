@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 3. LOAD NOTES FROM SERVER ---
     const loadNotes = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/notes', {
+            const response = await fetch('https://edumate-3oh3.onrender.com/api/notes', {
                 method: 'GET',
                 headers: {
                     // Include the token to prove we are authorized
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = document.getElementById('note-content').value;
 
         try {
-            const response = await fetch('http://localhost:5000/api/notes', {
+            const response = await fetch('https://edumate-3oh3.onrender.com/api/notes', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!confirm('Are you sure you want to delete this note?')) return;
             
             try {
-                const response = await fetch(`http://localhost:5000/api/notes/${noteId}`, {
+                const response = await fetch(`https://edumate-3oh3.onrender.com/api/notes/${noteId}`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': `Bearer ${token}` // Authenticate this request
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const loadReminders = async () => {
     remindersContainer.innerHTML = ''; // Clear old reminders
     try {
-        const res = await fetch('http://localhost:5000/api/reminders', {
+        const res = await fetch('https://edumate-3oh3.onrender.com/api/reminders', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         if (!res.ok) throw new Error('Failed to load reminders');
@@ -174,7 +174,7 @@ reminderForm.addEventListener('submit', async (e) => {
     const dueDate = document.getElementById('reminder-dueDate').value;
 
     try {
-        const res = await fetch('http://localhost:5000/api/reminders', {
+        const res = await fetch('https://edumate-3oh3.onrender.com/api/reminders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -195,7 +195,7 @@ remindersContainer.addEventListener('click', async (e) => {
      if (e.target.classList.contains('delete-btn')) {
         const reminderId = e.target.getAttribute('data-id');
         try {
-            await fetch(`http://localhost:5000/api/reminders/${reminderId}`, {
+            await fetch(`https://edumate-3oh3.onrender.com/api/reminders/${reminderId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -220,7 +220,7 @@ aiHelperForm.addEventListener('submit', async (e) => {
     aiResultContainer.innerHTML = '';
 
     try {
-        const res = await fetch('http://localhost:5000/api/ai/summarize', {
+        const res = await fetch('https://edumate-3oh3.onrender.com/api/ai/summarize', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -245,7 +245,7 @@ let productivityChart = null; // Variable to hold the chart instance
 
 const loadStats = async () => {
     try {
-        const res = await fetch('http://localhost:5000/api/stats', {
+        const res = await fetch('https://edumate-3oh3.onrender.com/api/stats', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         if (!res.ok) throw new Error('Failed to load stats');
