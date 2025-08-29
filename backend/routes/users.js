@@ -23,9 +23,15 @@ router.post('/register', async (req, res) => {
         await user.save();
         res.status(201).json({ message: 'User registered successfully!' });
     } catch (error) {
-        console.error(error.message);
-        res.status(500).json({ message: 'Server error during registration.' });
-    }
+    // This will print the full, detailed error in your Render logs
+    console.error('REGISTRATION ERROR:', error); 
+
+    // This will send a more specific error message back to the browser
+    res.status(500).json({ 
+        message: 'Server error during registration.',
+        error: error.message 
+    });
+}
 });
 
 // @route   POST /api/users/login
@@ -49,10 +55,16 @@ router.post('/login', async (req, res) => {
         const token = jwt.sign(payload, ' process.env.yourSecretKey', { expiresIn: '1h' }); // Remember to use a strong secret key
         
         res.json({ token });
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).json({ message: 'Server error during login.' });
-    }
+} catch (error) {
+    // This will print the full, detailed error in your Render logs
+    console.error('REGISTRATION ERROR:', error); 
+
+    // This will send a more specific error message back to the browser
+    res.status(500).json({ 
+        message: 'Server error during registration.',
+        error: error.message 
+    });
+}
 });
 
 module.exports = router;
