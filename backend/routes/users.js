@@ -46,7 +46,7 @@ router.post('/login', async (req, res) => {
         }
         // If credentials are correct, create a JWT token
         const payload = { user: { id: user.id } };
-        const token = jwt.sign(payload, 'yourSecretKey', { expiresIn: '1h' }); // Remember to use a strong secret key
+        const token = jwt.sign(payload, 'd3a3c1b1-6b8f-4d32-9c1a-7b8f2d3e4c5a', { expiresIn: '1h' }); // Remember to use a strong secret key
         
         res.json({ token });
     } catch (error) {
