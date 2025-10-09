@@ -33,4 +33,36 @@ router.post('/summarize', auth, async (req, res) => {
     }
 });
 
+// ... your existing router.post('/summarize', ...) code is up here ...
+
+// START: TEMPORARY DEBUGGING ROUTE
+router.get('/list-models', async (req, res) => {
+    try {
+        // Re-initialize the client to be safe
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        console.log("Fetching available models...");
+
+        // This is the function that asks Google AI for a list of models
+        const models = await genAI.listModels();
+
+        let modelList = [];
+        for await (const m of models) {
+            // We are interested in models that support the "generateContent" method
+            if (m.supportedGenerationMethods.includes("generateContent")) {
+               modelList.push(m.name);
+            }
+        }
+
+        console.log("Available generative models:", modelList);
+        res.json({ availableModels: modelList });
+
+    } catch (error) {
+        console.error("LIST MODELS ERROR:", error);
+        res.status(500).json({ message: "Failed to list models.", error: error.message });
+    }
+});
+// END: TEMPORARY DEBUGGING ROUTE
+
+module.exports = router; // This should be the last line
+
 module.exports = router;
