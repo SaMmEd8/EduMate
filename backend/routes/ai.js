@@ -7,7 +7,7 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 // Initialize the Google AI client
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+const model = genAI.getGenerativeModel({ model: "models/gemini-1.0-pro"});
 
 // @route   POST /api/ai/summarize
 // @desc    Summarize a piece of text
